@@ -24,11 +24,13 @@ class http {
   define apache::loadmodule () {
     exec { "/usr/sbin/a2enmod $name" :
       unless => "/bin/readlink -e /etc/apache2/mods-enabled/${name}.load",
-      notify => Service[apache2]
+      notify => Service['apache2']
     }
   }
  
-  apache::loadmodule{"rewrite":}
+  apache::loadmodule{"rewrite":
+    require => Package['apache2']
+    }
  
   package { "apache2":
     ensure => present,
@@ -119,6 +121,9 @@ class phpmyadmin
             target => "/etc/phpmyadmin/apache.conf",
             require => Package['apache2'],
             notify => Service["apache2"]
+    } ->
+    exec { '/usr/bin/mysqladmin -u root password root':
+        refreshonly => true,
     }
 }
  

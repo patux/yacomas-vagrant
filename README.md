@@ -1,5 +1,8 @@
-vagrant-php-box
-===============
+vagrant-yacomas dev environment
+===============================
+
+
+Environment based on: https://github.com/sapienza/vagrant-php-box
 
 Set up super fast a PHP5 development box with apache, mysql, phpmyadmin and whatever else that you may need
 
@@ -21,7 +24,7 @@ PS: I receive several emails asking me which is the phpmyadmin's login and passw
 <br/>
 login: root
 <br/>
-password: 'leave it empty!'
+password: root
 </p>
 
 

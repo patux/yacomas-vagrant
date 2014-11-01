@@ -8,8 +8,8 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   #config.vm.box = "base"
-  config.vm.box = "lucid32"
-  config.vm.box_url = "http://files.vagrantup.com/lucid32.box"
+  config.vm.box = "precise64"
+  config.vbguest.auto_update = false
 
   forward_port = ->(guest, host = guest) do
     config.vm.network :forwarded_port,
