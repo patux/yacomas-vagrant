@@ -47,7 +47,7 @@ class php{
     ensure => present,
     require => Exec['apt-get update'],
   }
-  file { '/var/www/index.php':
+  file { '/var/www/html/index.php':
     mode   => 644,
     owner  => root,
     group  => root,
@@ -91,7 +91,7 @@ class phpmyadmin
 
     file
     {
-        "/etc/apache2/conf.d/phpmyadmin.conf":
+        "/etc/apache2/conf-enabled/phpmyadmin.conf":
             ensure => link,
             target => "/etc/phpmyadmin/apache.conf",
             require => Package['apache2'],
@@ -119,7 +119,7 @@ class yacomas
     command => '/usr/bin/mysql -u root --password=root < /vagrant/yacomas/Yacomas_reference/database/create_db.sql',
     require => [ Vcsrepo['/vagrant/yacomas'], Package['phpmyadmin'], Exec['set mysqlpassword'] ],
   }
-  file { "/var/www/yacomas":
+  file { "/var/www/html/yacomas":
     ensure => link,
     target => '/vagrant/yacomas',
     require => Vcsrepo['/vagrant/yacomas'],
