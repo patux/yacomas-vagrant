@@ -33,4 +33,5 @@ password: root
   * php5-curl
   * php5-sqlite
   * libapache2-mod-php5
+  * phpmyadmin
   * yacomas

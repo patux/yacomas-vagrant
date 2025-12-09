@@ -11,9 +11,9 @@ Vagrant.configure("2") do |config|
       auto_correct: true
   end
 
-  forward_port[1080]      # mailcatcher 
-  forward_port[3306]      # mysql 
-  forward_port[80, 8080]  # nginx/apache
+  forward_port[1080]       # mailcatcher
+  forward_port[3306, 3307] # mysql
+  forward_port[80, 8080]   # nginx/apache
 
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
