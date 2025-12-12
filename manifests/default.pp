@@ -29,6 +29,13 @@ class http {
     ensure => running,
     require => Package["apache2"],
   }
+
+  user {  "www-data":
+    require => Package["apache2"],
+    ensure => present,
+    groups => ['vboxsf','www-data'],
+    notify => Service["apache2"],
+  }
 }
 
 class php{
@@ -47,6 +54,7 @@ class php{
     ensure => present,
     require => Exec['apt-get update'],
   }
+
   file { '/var/www/html/index.php':
     mode   => 644,
     owner  => root,
@@ -86,8 +94,6 @@ class yacomas
   vcsrepo { "/vagrant/yacomas":
     ensure   => present,
     provider => git,
-    owner    => www-data,
-    group    => www-data,
     source   => 'https://github.com/patux/YaCOMAS.git',
     revision => 'master',
     require => [ Package['git'], Class['phpmyadmin'],]
