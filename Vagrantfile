@@ -19,9 +19,9 @@ Vagrant.configure("2") do |config|
     echo "net.ipv6.conf.all.disable_ipv6 = 1" | sudo tee -a /etc/sysctl.conf
     echo "net.ipv6.conf.default.disable_ipv6 = 1" | sudo tee -a /etc/sysctl.conf
     # Apply changes immediately
-    sudo sysctl -p
+    sysctl -p
     # Optional: comment out the ipv6 loopback address in /etc/hosts to prevent issues
-    sudo sed -i 's/::1/# ::1/' /etc/hosts
+    sed -i 's/::1/# ::1/' /etc/hosts
   SHELL
 
   config.vm.provision :puppet do |puppet|
