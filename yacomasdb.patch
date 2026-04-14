@@ -1,0 +1,13 @@
+diff --git a/Yacomas_reference/database/create_db.sql b/Yacomas_reference/database/create_db.sql
+index 80f72b8..2c81881 100644
+--- a/Yacomas_reference/database/create_db.sql
++++ b/Yacomas_reference/database/create_db.sql
+@@ -276,7 +276,7 @@ DROP TABLE IF EXISTS `evento_ocupa`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+ /*!40101 SET character_set_client = utf8 */;
+ CREATE TABLE `evento_ocupa` (
+-  `id_evento` tinyint(4) NOT NULL DEFAULT '0',
++  `id_evento` int(4) NOT NULL DEFAULT '0',
+   `hora` tinyint(4) NOT NULL DEFAULT '0',
+   `id_fecha` int(11) NOT NULL DEFAULT '0',
+   `id_lugar` int(11) NOT NULL DEFAULT '0',

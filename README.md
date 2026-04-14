@@ -42,3 +42,10 @@ To create the tunnel for apache use the following command
 ```
 vagrant ssh -- -f -N -L 8080:localhost:80
 ```
+
+
+### known issues in yacomas (archived repo)
+
+`id_evento` in `evento_ocupa` table must be `int`
+
+See [yacomasdb.patch](yacomasdb.patch)
