@@ -1,8 +1,13 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# libvirt provider may not create the port forwarding tunnels for apache and mysql
+# Create with:
+# vagrant ssh -- -f -N -L 8080:localhost:80
+
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/trusty64"
+  config.vm.hostname = "yacomas.local"
 
   forward_port = ->(guest, host = guest) do
     config.vm.network :forwarded_port,
@@ -11,9 +16,7 @@ Vagrant.configure("2") do |config|
       auto_correct: true
   end
 
-  forward_port[1080]       # mailcatcher
-  forward_port[3306, 3307] # mysql
-  forward_port[80, 8080]   # nginx/apache
+  forward_port[80, 8080]   # apache
 
   config.vm.provision "disable-ipv6", type: "shell", inline: <<-SHELL
     echo "net.ipv6.conf.all.disable_ipv6 = 1" | sudo tee -a /etc/sysctl.conf
