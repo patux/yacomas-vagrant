@@ -95,7 +95,7 @@ class yacomas
     ensure   => present,
     provider => git,
     source   => 'https://github.com/patux/YaCOMAS.git',
-    revision => 'master',
+    revision => 'agents',
     require => [ Package['git'], Class['phpmyadmin'],]
   }
   exec { "create yacomas_db":
