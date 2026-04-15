@@ -9,6 +9,16 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.hostname = "yacomas.local"
 
+  config.vm.provider :virtualbox do |virtualbox|
+    virtualbox.memory = 4096
+    virtualbox.cpus = 2
+  end
+
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.memory = 4096
+    libvirt.cpus = 2
+  end
+
   forward_port = ->(guest, host = guest) do
     config.vm.network :forwarded_port,
       guest: guest,
