@@ -1,6 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# Pick your preferred virtual machine (or you flag --provider=[PROVIDER NAME]
+ENV['VAGRANT_DEFAULT_PROVIDER'] = "virtualbox"  # "libvirt", "virtualbox"
+
 # libvirt provider may not create the port forwarding tunnels for apache and mysql
 # Create with:
 # vagrant ssh -- -f -N -L 8080:localhost:80
